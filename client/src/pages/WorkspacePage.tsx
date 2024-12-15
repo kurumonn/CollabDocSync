@@ -111,22 +111,22 @@ export default function WorkspacePage({ params }: { params: { id: string } }) {
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Invite Member</DialogTitle>
+                  <DialogTitle>メンバーを招待</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleInvite} className="space-y-4">
                   <div>
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">メールアドレス</Label>
                     <Input id="email" name="email" type="email" required />
                   </div>
                   <div>
-                    <Label htmlFor="role">Role</Label>
+                    <Label htmlFor="role">権限</Label>
                     <Select name="role" defaultValue="editor">
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="editor">Editor</SelectItem>
-                        <SelectItem value="viewer">Viewer</SelectItem>
+                        <SelectItem value="editor">編集者</SelectItem>
+                        <SelectItem value="viewer">閲覧者</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -134,7 +134,7 @@ export default function WorkspacePage({ params }: { params: { id: string } }) {
                     {inviteToWorkspace.isPending ? (
                       <Loader2 className="h-4 w-4 animate-spin mr-2" />
                     ) : null}
-                    Send Invitation
+                    招待を送信
                   </Button>
                 </form>
               </DialogContent>
@@ -149,22 +149,22 @@ export default function WorkspacePage({ params }: { params: { id: string } }) {
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Create New Document</DialogTitle>
+                  <DialogTitle>新規ドキュメントの作成</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleCreateDocument} className="space-y-4">
                   <div>
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name">名前</Label>
                     <Input id="name" name="name" required />
                   </div>
                   <div>
-                    <Label htmlFor="type">Type</Label>
+                    <Label htmlFor="type">種類</Label>
                     <Select name="type" defaultValue="document">
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="document">Document</SelectItem>
-                        <SelectItem value="spreadsheet">Spreadsheet</SelectItem>
+                        <SelectItem value="document">ドキュメント</SelectItem>
+                        <SelectItem value="spreadsheet">スプレッドシート</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -172,7 +172,7 @@ export default function WorkspacePage({ params }: { params: { id: string } }) {
                     {createDocument.isPending ? (
                       <Loader2 className="h-4 w-4 animate-spin mr-2" />
                     ) : null}
-                    Create Document
+                    作成
                   </Button>
                 </form>
               </DialogContent>

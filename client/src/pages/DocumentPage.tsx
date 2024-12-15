@@ -84,11 +84,11 @@ export default function DocumentPage({ params }: { params: { id: string } }) {
             <div className="ml-auto flex gap-4">
               <Button variant="outline" disabled={!isDirty} onClick={handleSave}>
                 <Save className="h-4 w-4 mr-2" />
-                Save
+                保存
               </Button>
               <Button variant="outline">
                 <History className="h-4 w-4 mr-2" />
-                History
+                履歴
               </Button>
             </div>
           </div>
