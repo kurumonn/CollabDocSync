@@ -67,11 +67,11 @@ export function setupAuth(app: Express) {
           .limit(1);
 
         if (!user) {
-          return done(null, false, { message: "Incorrect username." });
+          return done(null, false, { message: "ユーザー名が正しくありません" });
         }
         const isMatch = await crypto.compare(password, user.password);
         if (!isMatch) {
-          return done(null, false, { message: "Incorrect password." });
+          return done(null, false, { message: "パスワードが正しくありません" });
         }
         return done(null, user);
       } catch (err) {
@@ -108,7 +108,7 @@ export function setupAuth(app: Express) {
         .limit(1);
 
       if (existingUser) {
-        return res.status(400).send("Username already exists");
+        return res.status(400).send("このユーザー名は既に使用されています");
       }
 
       const hashedPassword = await crypto.hash(password);
@@ -126,7 +126,10 @@ export function setupAuth(app: Express) {
         if (err) {
           return next(err);
         }
-        return res.json(newUser);
+        return res.json({
+          message: "登録が完了しました",
+          user: newUser
+        });
       });
     } catch (error) {
       next(error);
@@ -142,7 +145,7 @@ export function setupAuth(app: Express) {
         }
 
         if (!user) {
-          return res.status(400).send(info.message ?? "Login failed");
+          return res.status(400).send(info.message ?? "ログインに失敗しました");
         }
 
         req.logIn(user, (err) => {
@@ -150,7 +153,10 @@ export function setupAuth(app: Express) {
             return next(err);
           }
 
-          return res.json(user);
+          return res.json({
+            message: "ログインしました",
+            user: user
+          });
         });
       }
     )(req, res, next);
@@ -159,10 +165,10 @@ export function setupAuth(app: Express) {
   app.post("/api/logout", (req, res) => {
     req.logout((err) => {
       if (err) {
-        return res.status(500).send("Logout failed");
+        return res.status(500).send("ログアウトに失敗しました");
       }
 
-      res.json({ message: "Logout successful" });
+      res.json({ message: "ログアウトしました" });
     });
   });
 
@@ -171,6 +177,6 @@ export function setupAuth(app: Express) {
       return res.json(req.user);
     }
 
-    res.status(401).send("Not logged in");
+    res.status(401).send("ログインが必要です");
   });
 }

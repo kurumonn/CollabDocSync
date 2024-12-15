@@ -75,40 +75,40 @@ export default function HomePage() {
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">My Workspaces</h1>
+          <h1 className="text-3xl font-bold">マイワークスペース</h1>
           <div className="flex gap-4">
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
               <DialogTrigger asChild>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
-                  New Workspace
+                  新規ワークスペース
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Create New Workspace</DialogTitle>
+                  <DialogTitle>新規ワークスペースの作成</DialogTitle>
                 </DialogHeader>
                 <form onSubmit={handleCreateWorkspace} className="space-y-4">
                   <div>
-                    <Label htmlFor="name">Name</Label>
+                    <Label htmlFor="name">名前</Label>
                     <Input id="name" name="name" required />
                   </div>
                   <div>
-                    <Label htmlFor="description">Description</Label>
+                    <Label htmlFor="description">説明</Label>
                     <Textarea id="description" name="description" />
                   </div>
                   <Button type="submit" disabled={createWorkspace.isPending}>
                     {createWorkspace.isPending ? (
                       <Loader2 className="h-4 w-4 animate-spin mr-2" />
                     ) : null}
-                    Create Workspace
+                    作成
                   </Button>
                 </form>
               </DialogContent>
             </Dialog>
             <Button variant="outline" onClick={handleLogout}>
               <LogOut className="h-4 w-4 mr-2" />
-              Logout
+              ログアウト
             </Button>
           </div>
         </div>

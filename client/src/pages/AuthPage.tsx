@@ -51,21 +51,21 @@ export default function AuthPage() {
       <Card className="w-full max-w-md mx-4">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center">
-            Welcome to DocCollab
+            DocCollabへようこそ
           </CardTitle>
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login">
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="login">Login</TabsTrigger>
-              <TabsTrigger value="register">Register</TabsTrigger>
+              <TabsTrigger value="login">ログイン</TabsTrigger>
+              <TabsTrigger value="register">新規登録</TabsTrigger>
             </TabsList>
             
             <TabsContent value="login">
               <form onSubmit={(e) => handleSubmit(e, "login")}>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="username">Username</Label>
+                    <Label htmlFor="username">ユーザー名</Label>
                     <Input
                       id="username"
                       name="username"
@@ -74,7 +74,7 @@ export default function AuthPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="password">Password</Label>
+                    <Label htmlFor="password">パスワード</Label>
                     <Input
                       id="password"
                       name="password"
@@ -84,7 +84,7 @@ export default function AuthPage() {
                     />
                   </div>
                   <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? "Loading..." : "Login"}
+                    {isLoading ? "読み込み中..." : "ログイン"}
                   </Button>
                 </div>
               </form>
@@ -94,7 +94,7 @@ export default function AuthPage() {
               <form onSubmit={(e) => handleSubmit(e, "register")}>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="reg-username">Username</Label>
+                    <Label htmlFor="reg-username">ユーザー名</Label>
                     <Input
                       id="reg-username"
                       name="username"
@@ -103,7 +103,7 @@ export default function AuthPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="reg-email">Email</Label>
+                    <Label htmlFor="reg-email">メールアドレス</Label>
                     <Input
                       id="reg-email"
                       name="email"
@@ -113,7 +113,7 @@ export default function AuthPage() {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="reg-password">Password</Label>
+                    <Label htmlFor="reg-password">パスワード</Label>
                     <Input
                       id="reg-password"
                       name="password"
@@ -123,7 +123,7 @@ export default function AuthPage() {
                     />
                   </div>
                   <Button type="submit" className="w-full" disabled={isLoading}>
-                    {isLoading ? "Loading..." : "Register"}
+                    {isLoading ? "読み込み中..." : "アカウント作成"}
                   </Button>
                 </div>
               </form>
