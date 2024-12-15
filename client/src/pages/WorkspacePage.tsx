@@ -30,6 +30,7 @@ export default function WorkspacePage({ params }: { params: { id: string } }) {
   const { data: documents, isLoading: documentsLoading } = useDocuments(workspaceId);
   const createDocument = useCreateDocument();
   const inviteToWorkspace = useInviteToWorkspace();
+  const { user } = useUser();
   const { toast } = useToast();
   const [newDocOpen, setNewDocOpen] = useState(false);
   const [inviteOpen, setInviteOpen] = useState(false);
@@ -46,6 +47,7 @@ export default function WorkspacePage({ params }: { params: { id: string } }) {
         type,
         workspaceId,
         content: type === "document" ? { blocks: [] } : { cells: [] },
+        createdBy: user!.id,
       });
       setNewDocOpen(false);
       setLocation(`/document/${doc.id}`);
